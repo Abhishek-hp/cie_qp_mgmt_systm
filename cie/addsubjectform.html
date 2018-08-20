@@ -1,0 +1,25 @@
+{% extends "cie/header.html" %}
+{% load crispy_forms_tags %}
+
+{% block content%}
+
+<div class='row'>
+    <div class="col-sm-6 col-sm-offset-2" >
+
+{% if message %}{{ message }} {% endif%}
+
+
+{% if form %}
+<form class="" action = "" method="post">
+
+        {% csrf_token %}
+        {{form|crispy}}
+
+        <input type="submit" value="ADD" class="btn btn-primary">
+
+
+    </form>
+{% endif %}
+        </div>
+</div>
+{% endblock %}

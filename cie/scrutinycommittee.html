@@ -1,0 +1,31 @@
+{% extends "cie/header.html" %}
+{% block content %}
+    {%if resultset %}
+    <table rules="all" border="1" cellpadding="5">
+  <thead>
+    <th> member id</th>
+    <th> name </th>
+  </thead>
+    <tbody>
+         {% for id,name in resultset %}
+
+
+            <tr>
+                <td>{{ id }}</td>
+                <td>{{ name }}</td>
+            </tr>
+
+        {% endfor %}
+  </tbody>
+</table>
+
+
+    {% else %}<br><p>No results found...</p><br>
+    {% endif %}
+
+<a  href='/addmember/' ><input type="submit" value="addmember" class="btn btn-primary"></a>
+<a  href='/deletemember/' ><input type="submit" value="deletemember" class="btn btn-primary"></a>
+
+
+
+{% endblock %}

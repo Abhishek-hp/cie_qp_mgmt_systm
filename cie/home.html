@@ -1,0 +1,15 @@
+{% extends "cie/header.html" %}
+{% block content %}
+<p>home page </p>
+
+{% if message %}{{message}}{% endif %}
+{% if insertmessage %}{{insertmessage}}{% endif %}
+
+<form method="post" class="" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="file" id="myfile" name="myfile"/>
+    <input type="submit" value="Login" class="btn btn-primary">
+</form>
+
+{% endblock %}

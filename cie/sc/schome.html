@@ -1,0 +1,33 @@
+{% extends "cie/header.html" %}
+{% load crispy_forms_tags %}
+
+{% block content%}
+
+<div class='row'>
+    <div class="col-sm-6 col-sm-offset-2" >
+{% if message %}  {{ message }}{% endif %}
+        {% for sub in subjects %}
+        <br><h4><b>{{sub}}</b></h4>
+                {% for i in result %}
+                    {% for j in i %}
+                        {% if sub in j %}
+                            {{j}}<br>
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
+        {% endfor %}
+        <br><br>
+<form class="" action = "/schome/" method="post">
+
+        {% csrf_token %}
+
+                {{ form | crispy }}
+        <input type="submit" name="downloaded" value="download" class="btn btn-primary">{% if downloadmessage %}  {{ downloadmessage }}{% endif %}
+        <input type="submit" name="accepted" value="select" class="btn btn-primary">{% if acceptmessage %}  {{ acceptmessage }}{% endif %}
+
+
+    </form>
+
+        </div>
+</div>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "cie/header.html" %}
+{% block content %}
+    {%if resultset %}
+    <table rules="all" border="1" cellpadding="5">
+  <thead>
+    <th> name</th>
+    <th> id</th>
+    <th> dob</th>
+    <th> email</th>
+    <th> phone</th>
+  </thead>
+    <tbody>
+         {% for id,name,dob,email,phone in resultset %}
+
+            <tr>
+                <td>{{ name }}</td>
+                <td>{{ id }}</td>
+                <td>{{ dob }}</td>
+                <td>{{ email }}</td>
+                <td>{{ phone }}</td>
+
+            </tr>
+        {% endfor %}
+  </tbody>
+</table>
+
+
+    {% else %}<br><p>No results found...</p><br>
+    {% endif %}
+
+<a  href='/addstaff/' ><input type="submit" value="addstaff" class="btn btn-primary"></a>
+<a  href='/deletestaff/' ><input type="submit" value="deletestaff" class="btn btn-primary"></a>
+
+
+
+{% endblock %}

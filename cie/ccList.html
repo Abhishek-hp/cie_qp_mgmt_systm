@@ -1,0 +1,35 @@
+{% extends "cie/header.html" %}
+{% block content %}
+    {%if resultset %}
+    <table rules="all" border="1" cellpadding="5">
+  <thead>
+    <th> subject code</th>
+    <th> subject name</th>
+    <th> semester </th>
+    <th> co-ordinator</th>
+  </thead>
+    <tbody>
+         {% for name,code,sem,cc in resultset %}
+
+            <tr>
+                <td>{{ name }}</td>
+                <td>{{ code }}</td>
+                <td>{{ sem}}</td>
+                <td>{{ cc }}</td>
+
+
+            </tr>
+        {% endfor %}
+  </tbody>
+</table>
+
+
+    {% else %}<br><p>No results found...</p><br>
+    {% endif %}
+
+<a  href='/addcc/' ><input type="submit" value="add co" class="btn btn-primary"></a>
+<a  href='/deletecc/' ><input type="submit" value="deleteco" class="btn btn-primary"></a>
+
+
+
+{% endblock %}

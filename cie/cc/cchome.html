@@ -1,0 +1,28 @@
+{% extends "cie/header.html" %}
+{% load crispy_forms_tags %}
+
+{% block content%}
+
+<div class='row'>
+    <div class="col-sm-6 col-sm-offset-2" >
+{% if message %}  {{ message }}{% endif %}
+        {% if length is not 0 %}<p>The below papers are uploaded by faculties...</p>
+                {% for i,j in result %}
+                    {{i}}<br>   {{      j}}<br><br>
+                {% endfor %}
+        {% endif %}
+<form class="" action = "/cchome/" method="post">
+
+        {% csrf_token %}
+
+                {{ form | crispy }}
+        <input type="submit" name="downloaded" value="download" class="btn btn-primary">{% if downloadmessage %}  {{ downloadmessage }}{% endif %}
+        <input type="submit" name="rejected" value="reject" class="btn btn-primary">{% if rejectmessage %}  {{ rejectmessage }}{% endif %}
+        <input type="submit" name="accepted" value="accept" class="btn btn-primary">{% if acceptmessage %}  {{ acceptmessage }}{% endif %}
+
+
+    </form>
+
+        </div>
+</div>
+{% endblock %}

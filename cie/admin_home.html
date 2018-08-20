@@ -1,0 +1,14 @@
+{% extends "cie/header.html" %}
+
+{% block content%}
+<p><h3>welcome hp</h3></p>
+   <br> <a href="{% url 'stafflist' %}"><button type="button" class="btn btn-primary">staffs</button></a>
+  <br>  <a href="{% url 'addsubject' %}"><button type="button" class="btn btn-primary">AddSubject</button></a>
+  <br>  <a href="{% url 'pclist' %}"><button type="button" class="btn btn-primary">pgmcoordinators</button></a>
+  <br>  <a href="{% url 'cclist' %}"><button type="button" class="btn btn-primary">courses</button></a>
+  <br>  <a href="{% url 'facultylist' %}"><button type="button" class="btn btn-primary">faculties</button></a>
+    <br> <a href="{% url 'scrutinycommittee' %}"><button type="button" class="btn btn-primary">scrutiny committee</button></a>
+
+{% endblock %}
+
+

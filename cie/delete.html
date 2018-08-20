@@ -1,0 +1,23 @@
+{% extends "cie/header.html" %}
+{% load crispy_forms_tags %}
+
+{% block content%}
+<div class='row'>
+    <div class="col-sm-6 col-sm-offset-2" >
+{% if message %}
+    {{ message }}
+    <a href = '/adminhome/'><input type="submit" value="back" class="btn btn-primary"></a>
+
+
+{% elif form %}
+    <form class="" action = "deletestaff" method="post">
+        {% csrf_token %}
+        {{form|crispy}}
+
+        <input type="submit" value="delete" class="btn btn-primary">
+
+    </form>
+{% endif %}
+    </div></div>
+
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "cie/header.html" %}
+{% block content %}
+    {%if resultset %}
+    <table rules="all" border="1" cellpadding="5">
+  <thead>
+
+    <th> pc id</th>
+    <th> year</th>
+  </thead>
+    <tbody>
+         {% for year,id in resultset %}
+
+            <tr>
+                <td>{{ id }}</td>
+                <td>{{ year }}</td>
+
+            </tr>
+        {% endfor %}
+  </tbody>
+</table>
+
+
+    {% else %}<br><p>No results found...</p><br>
+    {% endif %}
+
+<a  href='/addpc/' ><input type="submit" value="addpc" class="btn btn-primary"></a>
+<a  href='/deletepc/' ><input type="submit" value="deletepc" class="btn btn-primary"></a>
+
+{% endblock %}

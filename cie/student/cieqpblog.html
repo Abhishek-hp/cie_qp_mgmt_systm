@@ -1,0 +1,57 @@
+{% extends "cie/header.html" %}
+{% load crispy_forms_tags %}
+
+{% block content%}
+ <div class="container">
+
+      <!-- Static navbar -->
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="{% url 'sem1papers' %}" >Sem1</a></li>
+                <li><a href="{% url 'sem2papers' %}" >Sem2</a></li>
+                <li><a href="{% url 'sem3papers' %}" >Sem3</a></li>
+                <li><a href="{% url 'sem4papers' %}" >Sem4</a></li>
+                <li><a href="{% url 'sem5papers' %}" >Sem5</a></li>
+                <li><a href="{% url 'sem6papers' %}" >Sem6</a></li>
+                <li><a href="{% url 'sem7papers' %}" >Sem7</a></li>
+                <li><a href="{% url 'sem8papers' %}" >Sem8</a></li>
+            </ul>
+
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+ </div>
+
+<div class='row'>
+    <div class="col-sm-6 col-sm-offset-2" >
+{% for sub in subjects %}
+        <br><h4><b>{{sub}}</b></h4><ol>
+                {% for i in papers %}
+                        {% if sub in i %}
+        <li>{{i}}</li>
+                        {% endif %}
+                {% endfor %}</ol>
+        {% endfor %}
+<br>
+{% if form %}
+<form class="" action = "/sem1papers/" method="post">
+
+        {% csrf_token %}
+
+                {{ form | crispy }}
+        <input type="submit" name="downloaded" value="download" class="btn btn-primary">{% if downloadmessage %}  {{ downloadmessage }}{% endif %}
+    </form>
+{% endif %}
+        </div>
+</div>
+
+
+
+
+
+{% endblock %}
+
+
